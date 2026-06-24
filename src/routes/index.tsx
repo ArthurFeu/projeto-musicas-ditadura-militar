@@ -6,7 +6,7 @@ import { loadSongs } from "@/lib/songs";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Músicas da Ditadura — Infográfico interativo" },
+      { title: "Músicas da Ditadura: Infográfico interativo" },
       {
         name: "description",
         content:

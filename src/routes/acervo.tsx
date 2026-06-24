@@ -8,7 +8,7 @@ import { SongModal } from "@/components/SongModal";
 export const Route = createFileRoute("/acervo")({
   head: () => ({
     meta: [
-      { title: "Acervo de Músicas — Músicas da Ditadura" },
+      { title: "Acervo de Músicas: Músicas da Ditadura" },
       { name: "description", content: "Lista completa de canções arquivadas." },
     ],
   }),

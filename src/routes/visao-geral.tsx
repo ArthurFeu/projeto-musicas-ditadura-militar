@@ -21,7 +21,7 @@ const textosMovimentos: Record<string, string> = {
 export const Route = createFileRoute("/visao-geral")({
   head: () => ({
     meta: [
-      { title: "Visão geral — Músicas da Ditadura" },
+      { title: "Visão geral: Músicas da Ditadura" },
       {
         name: "description",
         content:
