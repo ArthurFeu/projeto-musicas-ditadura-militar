@@ -119,6 +119,9 @@ function NavBar() {
           <Link to="/visao-geral" activeProps={{ className: "text-crimson" }}>
             Visão geral
           </Link>
+          <Link to="/timeline" activeProps={{ className: "text-crimson" }}>
+            Linha do tempo
+          </Link>
           <Link to="/acervo" activeProps={{ className: "text-crimson" }}>
             Acervo completo
           </Link>

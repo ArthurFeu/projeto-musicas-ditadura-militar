@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VisaoGeralRouteImport } from './routes/visao-geral'
+import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as AcervoRouteImport } from './routes/acervo'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as MovimentoSlugRouteImport } from './routes/movimento.$slug'
@@ -17,6 +18,11 @@ import { Route as MovimentoSlugRouteImport } from './routes/movimento.$slug'
 const VisaoGeralRoute = VisaoGeralRouteImport.update({
   id: '/visao-geral',
   path: '/visao-geral',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TimelineRoute = TimelineRouteImport.update({
+  id: '/timeline',
+  path: '/timeline',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AcervoRoute = AcervoRouteImport.update({
@@ -38,12 +44,14 @@ const MovimentoSlugRoute = MovimentoSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/acervo': typeof AcervoRoute
+  '/timeline': typeof TimelineRoute
   '/visao-geral': typeof VisaoGeralRoute
   '/movimento/$slug': typeof MovimentoSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/acervo': typeof AcervoRoute
+  '/timeline': typeof TimelineRoute
   '/visao-geral': typeof VisaoGeralRoute
   '/movimento/$slug': typeof MovimentoSlugRoute
 }
@@ -51,20 +59,28 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/acervo': typeof AcervoRoute
+  '/timeline': typeof TimelineRoute
   '/visao-geral': typeof VisaoGeralRoute
   '/movimento/$slug': typeof MovimentoSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/acervo' | '/visao-geral' | '/movimento/$slug'
+  fullPaths: '/' | '/acervo' | '/timeline' | '/visao-geral' | '/movimento/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/acervo' | '/visao-geral' | '/movimento/$slug'
-  id: '__root__' | '/' | '/acervo' | '/visao-geral' | '/movimento/$slug'
+  to: '/' | '/acervo' | '/timeline' | '/visao-geral' | '/movimento/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/acervo'
+    | '/timeline'
+    | '/visao-geral'
+    | '/movimento/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AcervoRoute: typeof AcervoRoute
+  TimelineRoute: typeof TimelineRoute
   VisaoGeralRoute: typeof VisaoGeralRoute
   MovimentoSlugRoute: typeof MovimentoSlugRoute
 }
@@ -76,6 +92,13 @@ declare module '@tanstack/react-router' {
       path: '/visao-geral'
       fullPath: '/visao-geral'
       preLoaderRoute: typeof VisaoGeralRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/timeline': {
+      id: '/timeline'
+      path: '/timeline'
+      fullPath: '/timeline'
+      preLoaderRoute: typeof TimelineRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/acervo': {
@@ -105,6 +128,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AcervoRoute: AcervoRoute,
+  TimelineRoute: TimelineRoute,
   VisaoGeralRoute: VisaoGeralRoute,
   MovimentoSlugRoute: MovimentoSlugRoute,
 }

@@ -223,6 +223,15 @@ function VisaoGeral() {
           </div>
         </div>
       </section>
+
+      <div className="mt-12 flex justify-center">
+        <Link
+          to="/timeline"
+          className="inline-flex items-center justify-center rounded-full border-2 border-ink bg-ink px-8 py-4 text-base font-display text-paper transition hover:bg-paper hover:text-ink"
+        >
+          Ver linha do tempo
+        </Link>
+      </div>
     </main>
   );
 }

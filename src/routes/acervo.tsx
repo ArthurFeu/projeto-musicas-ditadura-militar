@@ -38,19 +38,21 @@ function AcervoPage() {
   const movimentosUnicos = Array.from(new Set(songs.map((s) => s.movimento).filter(Boolean)));
 
   // Lógica de filtragem combinada (Movimento + Texto)
-  const filteredSongs = songs.filter((s) => {
-    // 1. Verifica o movimento
-    const matchMovimento = filterMovimento === "Todos" || s.movimento === filterMovimento;
+  const filteredSongs = songs
+    .filter((s) => {
+      // 1. Verifica o movimento
+      const matchMovimento = filterMovimento === "Todos" || s.movimento === filterMovimento;
 
-    // 2. Verifica a busca por texto (nome ou cantor)
-    const searchLower = searchQuery.toLowerCase();
-    const matchSearch =
-      !searchQuery ||
-      s.nome?.toLowerCase().includes(searchLower) ||
-      s.cantor?.toLowerCase().includes(searchLower);
+      // 2. Verifica a busca por texto (nome ou cantor)
+      const searchLower = searchQuery.toLowerCase();
+      const matchSearch =
+        !searchQuery ||
+        s.nome?.toLowerCase().includes(searchLower) ||
+        s.cantor?.toLowerCase().includes(searchLower);
 
-    return matchMovimento && matchSearch;
-  });
+      return matchMovimento && matchSearch;
+    })
+    .sort((a, b) => (a.nome ?? "").localeCompare(b.nome ?? ""));
 
   // Lógica de paginação
   const totalPages = Math.ceil(filteredSongs.length / ITEMS_PER_PAGE);
